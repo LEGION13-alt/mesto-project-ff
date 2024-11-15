@@ -1,41 +1,38 @@
 
 // @todo: Темплейт карточки
 
-const placesList = document.querySelector('.places__list');
+const cardList = document.querySelector('.places__list');
 const cardTemplate = document.querySelector('#card-template').content;
 
 // @todo: DOM узлы
 
+
 // @todo: Функция создания карточки
 
+    function createCard({name, link}, removeCard){
+        const cardElement = cardTemplate.querySelector('.places__item').cloneNode(true);
+        cardElement.querySelector('.card__title').textContent = name;
+        const cardImage = cardElement.querySelector('.card__image').src = link;
+        cardElement.querySelector('.card__image').setAttribute('alt','описание изображения');
 
-const cardInfo = initialCards.map(function(item){
-    return{
-        name:item.name,
-        link:item.link
-    };
-});
-    function render(){
-        cardInfo.forEach(renderCard);
+        const cardDelete = cardElement.querySelector('.card__delete-button');
+        cardDelete.addEventListener('click', () => {
+        removeCard(cardElement);
+      })
+      return cardElement;
     }
 
-    function renderCard({name, link}) {
-        const cardElement = cardTemplate.querySelector('.places__item').cloneNode(true);
-        const deleteButton = cardElement.querySelector('.card__delete-button');
-      
-        cardElement.querySelector('.card__title').textContent = name;
-        cardElement.querySelector('.card__image').src = link;
+    // @todo: Функция удаления карточки
 
-      // @todo: Функция удаления карточки
-
-        deleteButton.addEventListener('click', (evt) => {
-          evt.target.closest('.places__item').remove();
-        });
-
+      function removeCard(card) { 
+        card.remove()
+      };
+    
       // @todo: Вывести карточки на страницу
-        placesList.append(cardElement);
+
+        function renderCard(cardElement) { 
+        const newCard = createCard(cardElement, removeCard);
+        cardList.append(newCard);
       }
-      render()
 
-
-// @todo: Вывести карточки на страницу
+      initialCards.forEach(renderCard);
