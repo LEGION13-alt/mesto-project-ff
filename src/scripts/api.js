@@ -25,13 +25,13 @@ const getUserInfo = () => {
   };
 
   //обновить данные польз
-  const updateUserInfo = (userInfo) => {
+  const updateUserInfo = ({name, about}) => {
     return fetch(`${config.baseUrl}/users/me`, {
       method: "PATCH",
       headers: config.headers,
       body: JSON.stringify({
-        name: userInfo.name,
-        about: userInfo.about}),
+        name: name,
+        about: about}),
     }).then(checkResponse)
   };
 
@@ -55,39 +55,40 @@ const getUserInfo = () => {
   };
 
   //отправить карточку
-  const postNewCard = (cardInfo) => {
+  const postNewCard = ({name, link}) => {
     return fetch(`${config.baseUrl}/cards`, {
       method: "POST",
       headers: config.headers,
       body: JSON.stringify({
-        name: cardInfo.name,
-        link: cardInfo.link}),
+        name: name,
+        link: link}),
     }).then(checkResponse);
   };
 
 //удалить карточку
-const deleteCard = (cardInfo) => {
-    return fetch(`${config.baseUrl}/cards/${cardInfo._id}`, {
+const deleteCard = (cardId) => {
+    return fetch(`${config.baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: config.headers,
     }).then(checkResponse);
   };
 
 //поставить лайк
-const likeCard = (cardInfo) => {
-  return fetch(`${config.baseUrl}/cards/likes/${cardInfo._id}`, {
-    method: "PUT",
+const likeCard = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId._id}`, {
+   method: "PUT",
     headers: config.headers,
   }).then(checkResponse);
 };
 
 //удалить лайк
-const deleteLike = (cardInfo) => {
-  return fetch(`${config.baseUrl}/cards/likes/${cardInfo._id}`, {
+const deleteLike = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId._id}`, {
     method: "DELETE",
     headers: config.headers,
   }).then(checkResponse);
 };
+
 
 export {getUserInfo,updateUserInfo,updateAvatar,getInitialCards,postNewCard,deleteCard,likeCard,deleteLike};
 
