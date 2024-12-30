@@ -26,9 +26,9 @@
             style="background-image: url(<%=require('./images/avatar.jpg')%>)"
           ></div>
           <div class="profile__info">
-            <h1 class="profile__title"></h1>
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button"></button>
-            <p class="profile__description"></p>
+            <p class="profile__description">Исследователь океана</p>
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
@@ -128,13 +128,13 @@
         <button class="popup__close" type="button"></button>
         <h3 class="popup__title">Обновить аватар</h3>
         <form class="popup__form" name="avatar_form">
-          <input id="place-url-input"
+          <input
+            id="place-url-input"
             type="url"
             name="avatar"
             class="popup__input popup__input_type_url"
             placeholder="Ссылка на картинку"
             required
-            
           />
           <span class="place-url-input-error popup__input_type_error"></span>
           <button type="submit" class="button popup__button">Сохранить</button>
@@ -149,10 +149,10 @@
         <div class="card__description">
           <h2 class="card__title"></h2>
           <div class="card__like">
-          <button type="button" class="card__like-button"></button>
-          <span class="card__like-count"></span>
+            <button type="button" class="card__like-button"></button>
+            <span class="card__like-count"></span>
+          </div>
         </div>
-      </div>
       </li>
     </template>
   </body>

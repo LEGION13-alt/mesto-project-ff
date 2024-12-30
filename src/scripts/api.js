@@ -75,7 +75,7 @@ const deleteCard = (cardId) => {
 
 //поставить лайк
 const likeCard = (cardId) => {
-  return fetch(`${config.baseUrl}/cards/likes/${cardId._id}`, {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
    method: "PUT",
     headers: config.headers,
   }).then(checkResponse);
@@ -83,7 +83,7 @@ const likeCard = (cardId) => {
 
 //удалить лайк
 const deleteLike = (cardId) => {
-  return fetch(`${config.baseUrl}/cards/likes/${cardId._id}`, {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: "DELETE",
     headers: config.headers,
   }).then(checkResponse);
