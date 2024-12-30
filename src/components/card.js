@@ -65,19 +65,19 @@ const renderLikes = (likeCount, param) => {
 
 const onLike = (cardLikeBtn, likeCount, userId, cardId) => {
   if (cardLikeBtn.classList.contains("card__like-button_is-active")) {
-    cardLikeBtn.classList.remove("card__like-button_is-active");
     deleteLike(cardId)
       .then(() => {
         renderLikes(likeCount, "decrease");
+        cardLikeBtn.classList.remove("card__like-button_is-active");
       })
       .catch(() => {
         console.log("Ошибка", err);
       });
   } else {
-    cardLikeBtn.classList.add("card__like-button_is-active");
     likeCard(cardId)
       .then(() => {
         renderLikes(likeCount, "increase");
+        cardLikeBtn.classList.add("card__like-button_is-active");
       })
       .catch((err) => {
         console.log("Ошибка", err);
